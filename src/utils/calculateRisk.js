@@ -65,23 +65,32 @@ export function getRiskLevel(confidence) {
  */
 export function getRiskColor(level) {
   const colors = {
-    low: 'text-risk-low bg-green-50 border-green-200',
-    medium: 'text-risk-medium bg-amber-50 border-amber-200',
-    high: 'text-risk-high bg-red-50 border-red-200'
+    low: 'text-success-700 bg-gradient-to-br from-success-50 to-success-100/50 border-success-300',
+    medium: 'text-warning-700 bg-gradient-to-br from-warning-50 to-warning-100/50 border-warning-300',
+    high: 'text-danger-700 bg-gradient-to-br from-danger-50 to-danger-100/50 border-danger-300'
   };
   return colors[level] || colors.low;
 }
 
 /**
- * Get risk emoji based on level
+ * Get risk icon SVG based on level
  * @param {string} level - Risk level (low/medium/high)
- * @returns {string} Emoji
+ * @returns {Object} Icon configuration with SVG path
  */
-export function getRiskEmoji(level) {
-  const emojis = {
-    low: '🟢',
-    medium: '🟡',
-    high: '🔴'
+export function getRiskIcon(level) {
+  const icons = {
+    low: {
+      path: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+      color: 'text-success-600'
+    },
+    medium: {
+      path: 'M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z',
+      color: 'text-warning-600'
+    },
+    high: {
+      path: 'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z',
+      color: 'text-danger-600'
+    }
   };
-  return emojis[level] || emojis.low;
+  return icons[level] || icons.low;
 }
